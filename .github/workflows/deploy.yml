@@ -21,10 +21,10 @@ jobs:
       - run: npm run build
 
       - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4
+        uses: SamKirkland/FTP-Deploy-Action@v3.0.0
         with:
-          server: ftp.seudominio.com.br         # substitua pelo seu host FTP
-          username: ${{ secrets.FTP_USERNAME }} # crie no GitHub Secrets
-          password: ${{ secrets.FTP_PASSWORD }} # crie no GitHub Secrets
-          local-dir: ./dist
-          server-dir: /public_html/NewTech-Site  # ajuste conforme sua hospedagem
+            server: ftp.seudominio.com.br
+            username: ${{ secrets.FTP_USERNAME }}
+            password: ${{ secrets.FTP_PASSWORD }}
+            local-dir: ./dist
+            server-dir: /public_html/NewTech-Site
