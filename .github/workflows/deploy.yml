@@ -1,0 +1,30 @@
+name: Deploy React + Vite to Hostinger via FTP
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - run: npm install
+      - run: npm run build
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4
+        with:
+          server: ftp.seudominio.com.br         # substitua pelo seu host FTP
+          username: ${{ secrets.FTP_USERNAME }} # crie no GitHub Secrets
+          password: ${{ secrets.FTP_PASSWORD }} # crie no GitHub Secrets
+          local-dir: ./dist
+          server-dir: /public_html/NewTech-Site  # ajuste conforme sua hospedagem
