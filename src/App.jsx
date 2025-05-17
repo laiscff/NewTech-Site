@@ -1,4 +1,3 @@
-
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -28,7 +27,7 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/NewTech-Site" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/features" element={<FeaturesPage />} />
         <Route path="/prototypes" element={<PrototypesPage />} />
@@ -41,7 +40,7 @@ const AnimatedRoutes = () => {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/NewTech-Site">
       <div className="flex flex-col min-h-screen bg-background">
         <Navbar />
         <Suspense fallback={<PageLoader />}>
@@ -57,4 +56,3 @@ function App() {
 }
 
 export default App;
-  
